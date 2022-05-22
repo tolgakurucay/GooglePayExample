@@ -7,20 +7,20 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/ItemName"
+        android:id="@+id/goldSubscriptionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/ItemPrice"
-        app:layout_constraintEnd_toStartOf="@+id/ItemPrice"
+        app:layout_constraintBottom_toBottomOf="@+id/goldSubscriptionButton"
+        app:layout_constraintEnd_toStartOf="@+id/goldSubscriptionButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ItemPrice"
+        app:layout_constraintTop_toTopOf="@+id/goldSubscriptionButton"
         app:layout_constraintVertical_bias="0.482" />
 
     <Button
-        android:id="@+id/ItemPrice"
+        android:id="@+id/goldSubscriptionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -28,4 +28,26 @@
         android:text="Item Price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/premiumSubscriptionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:text="Item Prıce"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goldSubscriptionButton" />
+
+    <TextView
+        android:id="@+id/premiumSubscriptionTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/premiumSubscriptionButton"
+        app:layout_constraintEnd_toStartOf="@+id/premiumSubscriptionButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/premiumSubscriptionButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
