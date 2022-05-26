@@ -12,9 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GooglePayExample">
-        <activity
-            android:name=".CompletedActivity"
-            android:exported="false" />
+
         <activity
             android:name=".SubscribeActivity"
             android:exported="true"></activity>

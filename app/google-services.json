@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "525241330540",
+    "project_id": "effidocbillingtest",
+    "storage_bucket": "effidocbillingtest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525241330540:android:eff44129b6bf8f30fee149",
+        "android_client_info": {
+          "package_name": "com.tolgakurucay.googlepayexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "525241330540-rioogt21akkd3iv8b6if18o7i9d9g47l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tolgakurucay.googlepayexample",
+            "certificate_hash": "fb874de205089a2377ed6ee2c3e7823853d0f856"
+          }
+        },
+        {
+          "client_id": "525241330540-7jk8tn3jt794vsuaqigh74pqda5b42gp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWdV2oflfBAkHp7Xqrc-J2ZJiquUfsIQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525241330540-7jk8tn3jt794vsuaqigh74pqda5b42gp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

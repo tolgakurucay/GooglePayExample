@@ -3,6 +3,7 @@ package com.tolgakurucay.googlepayexample
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.android.billingclient.api.*
+import com.android.billingclient.api.Purchase
 import com.tolgakurucay.googlepayexample.databinding.ActivitySubscribeBinding
 
 
@@ -20,7 +21,7 @@ class SubscribeActivity : AppCompatActivity() {
         billingClient=BillingClient.newBuilder(this)
             .enablePendingPurchases()
             .setListener(object:PurchasesUpdatedListener{
-                override fun onPurchasesUpdated(p0: BillingResult, p1: MutableList<Purchase>?) {
+                /* override fun onPurchasesUpdated(p0: BillingResult, p1: MutableList<Purchase>?) {
                     if(p0.responseCode==BillingClient.BillingResponseCode.OK && p1!=null){
                         //completed
                     }
@@ -28,6 +29,9 @@ class SubscribeActivity : AppCompatActivity() {
                     {
                         //failed
                     }
+                }*/
+                override fun onPurchasesUpdated(p0: BillingResult, p1: MutableList<Purchase>?) {
+                    TODO("Not yet implemented")
                 }
 
             })
@@ -82,6 +86,7 @@ class SubscribeActivity : AppCompatActivity() {
             .setSkuDetails(skuDetails!!)
             .build()
         billingClient.launchBillingFlow(this@SubscribeActivity, billingFlowParams)
+
     }
 
    /* fun verifySubPurchase(purchases: Purchase) {

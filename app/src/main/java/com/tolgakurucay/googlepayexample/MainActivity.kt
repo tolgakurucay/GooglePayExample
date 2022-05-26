@@ -6,19 +6,27 @@ import android.util.Log
 import android.widget.Toast
 
 import com.android.billingclient.api.*
+import com.android.billingclient.api.Purchase
+import com.google.firebase.firestore.FirebaseFirestore
 import com.tolgakurucay.googlepayexample.databinding.ActivityMainBinding
+import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
     private lateinit var billingClient: BillingClient
+    private lateinit var firestore:FirebaseFirestore
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //initialize binding
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //initialize firestore
+        firestore= FirebaseFirestore.getInstance()
 
         //initialized billing client
         billingClient=BillingClient.newBuilder(this)
@@ -28,6 +36,40 @@ class MainActivity : AppCompatActivity() {
                     if(p0.responseCode==BillingClient.BillingResponseCode.OK && p1!=null){
                         Toast.makeText(this@MainActivity,"Billing process has completed",Toast.LENGTH_SHORT).show()
 
+                        //go to new activity before save the payment history in firebase
+                        billingClient.queryPurchaseHistoryAsync(QueryPurchaseHistoryParams.newBuilder().setProductType(BillingClient.ProductType.SUBS).build(),object :PurchaseHistoryResponseListener{
+                            override fun onPurchaseHistoryResponse(
+                                p0: BillingResult,
+                                p1: MutableList<PurchaseHistoryRecord>?
+                            ) {
+                                p1?.let {
+                                    for(purchaseItem in it){
+                                        var jsonObject=JSONObject(purchaseItem.originalJson)
+                                        val purchaseRecord=Purchase(jsonObject.getString("productId"),jsonObject.getString("purchaseToken"),"Tolga Kuruçay","tolgakurucay1446@gmail.com",jsonObject.getString("purchaseTime"),jsonObject.getString("quantity"),jsonObject.getString("developerPayload"))
+                                        Log.d("deneme",purchaseItem.originalJson)
+                                        firestore.collection("user-id-here")
+                                            .add(purchaseRecord)
+                                            .addOnSuccessListener {
+                                                Log.d("deneme","başarılı")
+                                            }
+                                            .addOnFailureListener {
+                                                Log.d("başarısız",it.localizedMessage)
+
+                                            }
+
+
+
+                                    }
+
+
+
+                                }
+                            }
+
+                        })
+
+
+
                     }
                     else if(p0.responseCode==BillingClient.BillingResponseCode.USER_CANCELED){
 
@@ -36,11 +78,7 @@ class MainActivity : AppCompatActivity() {
                     }
 
 
-
-
-
                 }
-
 
             })
             .build()
